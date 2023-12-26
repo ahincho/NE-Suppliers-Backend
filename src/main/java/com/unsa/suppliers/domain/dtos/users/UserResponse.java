@@ -1,4 +1,4 @@
-package com.unsa.suppliers.domain.dtos;
+package com.unsa.suppliers.domain.dtos.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
