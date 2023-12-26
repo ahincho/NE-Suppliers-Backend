@@ -1,6 +1,6 @@
-package com.unsa.suppliers.domain.exceptions;
+package com.unsa.suppliers.domain.exceptions.users;
 
-import static com.unsa.suppliers.domain.exceptions.UserExceptionMessages.DUPLICATED_USERNAME;
+import static com.unsa.suppliers.domain.exceptions.users.UserExceptionMessages.DUPLICATED_USERNAME;
 
 public class UserDuplicatedUsernameException extends Exception {
     public UserDuplicatedUsernameException() {

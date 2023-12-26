@@ -1,4 +1,4 @@
-package com.unsa.suppliers.domain.exceptions;
+package com.unsa.suppliers.domain.exceptions.users;
 
 public class UserExceptionMessages {
     public static final String DUPLICATED_EMAIL = "There is already an account with this email";
