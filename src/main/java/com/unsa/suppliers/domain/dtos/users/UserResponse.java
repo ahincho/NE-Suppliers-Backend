@@ -14,5 +14,4 @@ public class UserResponse {
     private String name;
     private String lastname;
     private String username;
-    private Set<String> roles;
 }
