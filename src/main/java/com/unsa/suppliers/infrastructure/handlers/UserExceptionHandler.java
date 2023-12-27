@@ -5,6 +5,7 @@ import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameExceptio
 import com.unsa.suppliers.domain.exceptions.users.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -21,5 +22,9 @@ public class UserExceptionHandler {
     @ExceptionHandler(UserDuplicatedUsernameException.class)
     public ResponseEntity<Void> userDuplicatedUsername() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<Void> usernameNotFound() {
+        return ResponseEntity.notFound().build();
     }
 }

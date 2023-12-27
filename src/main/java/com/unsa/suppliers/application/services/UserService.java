@@ -8,6 +8,7 @@ import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameExceptio
 import com.unsa.suppliers.domain.exceptions.users.UserNotFoundException;
 import com.unsa.suppliers.domain.repositories.RoleRepository;
 import com.unsa.suppliers.domain.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
@@ -18,9 +19,11 @@ import java.util.Set;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    private final PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
@@ -39,6 +42,7 @@ public class UserService {
         Optional<RoleEntity> roleEntity = roleRepository.findByName("USER");
         if (roleEntity.isEmpty()) { throw new RoleNotFoundException(); }
         userEntity.setRoles(Set.of(roleEntity.get()));
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return userRepository.save(userEntity);
     }
     @Transactional
