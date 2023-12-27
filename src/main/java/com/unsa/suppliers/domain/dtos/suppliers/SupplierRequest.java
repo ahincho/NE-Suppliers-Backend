@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SupplierRequest {
     @NotBlank(message = "Name must not be blank")
-    private Integer name;
+    private String name;
 }
