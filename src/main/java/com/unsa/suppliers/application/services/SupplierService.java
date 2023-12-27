@@ -44,6 +44,7 @@ public class SupplierService {
         Optional<SupplierEntity> optionalSupplierName = supplierRepository.findByName(supplierEntity.getName());
         if (optionalSupplierName.isPresent()) { throw new SupplierDuplicatedException(); }
         supplierEntity.setId(id);
+        supplierEntity.setState(optionalSupplierId.get().getState());
         supplierRepository.save(supplierEntity);
     }
     @Transactional
