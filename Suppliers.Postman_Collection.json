@@ -284,6 +284,155 @@
 					]
 				},
 				{
+					"name": "Suppliers",
+					"item": [
+						{
+							"name": "Get Suppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Supplier",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Tottus\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{suppliers}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Supplier By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/11",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Supplier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Random Supplier\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/2/inactivate",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"2",
+										"inactivate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/2/reactivate",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"2",
+										"reactivate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Auth",
 					"item": [
 						{
@@ -456,8 +605,13 @@
 			"type": "string"
 		},
 		{
+			"key": "suppliers",
+			"value": "api/suppliers",
+			"type": "string"
+		},
+		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlYW5jbyIsImlhdCI6MTcwMzY2MTY2NiwiZXhwIjoxNzAzNzQ4MDY2fQ.tnfycGPyriers_BJq5v7-FFFPgoVHUfkRWDwZYgMjWU",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhaGluY2hvIiwiaWF0IjoxNzAzNjk5ODc3LCJleHAiOjE3MDM3ODYyNzd9.GCZdJTZm6kwQO8s_gdFlOgI0j99lFhgJ_BG671Mwngk",
 			"type": "string"
 		}
 	]
