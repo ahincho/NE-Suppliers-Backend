@@ -5,7 +5,7 @@ import com.unsa.suppliers.domain.dtos.suppliers.SupplierResponse;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
 
 public class SupplierMapper {
-    public SupplierResponse entityToResponse(SupplierEntity supplierEntity) {
+    public static SupplierResponse entityToResponse(SupplierEntity supplierEntity) {
         return SupplierResponse.builder()
                 .id(supplierEntity.getId())
                 .name(supplierEntity.getName())
@@ -13,7 +13,7 @@ public class SupplierMapper {
                 .stateName(supplierEntity.getState().getName())
                 .build();
     }
-    public SupplierEntity requestToEntity(SupplierRequest supplierRequest) {
+    public static SupplierEntity requestToEntity(SupplierRequest supplierRequest) {
         return SupplierEntity.builder()
                 .name(supplierRequest.getName())
                 .build();
