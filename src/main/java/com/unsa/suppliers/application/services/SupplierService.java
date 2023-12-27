@@ -20,7 +20,7 @@ public class SupplierService {
         this.supplierRepository = supplierRepository;
         this.stateRepository = stateRepository;
     }
-    public List<SupplierEntity> getAll() {
+    public List<SupplierEntity> getAllSuppliers() {
         return supplierRepository.findAll();
     }
     public SupplierEntity findSupplierById(Integer id) throws SupplierNotFoundException {
