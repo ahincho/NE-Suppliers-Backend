@@ -49,10 +49,10 @@ public class SupplierController {
         supplierService.updateSupplier(id, SupplierMapper.requestToEntity(supplierRequest));
         return ResponseEntity.noContent().build();
     }
-    @PatchMapping("/{id}/delete")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
-        supplierService.changeSupplierState(id, "DELETE");
+        supplierService.changeSupplierState(id, "DELETED");
         return ResponseEntity.noContent().build();
     }
     @PatchMapping("/{id}/inactivate")
