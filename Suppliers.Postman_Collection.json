@@ -551,6 +551,552 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Cloud",
+			"item": [
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Get Roles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"WRITER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"VIEWER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Role By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"CONTENT_WRITER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Role",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fabiola\",\r\n    \"lastname\": \"Taára\",\r\n    \"username\": \"ftapara\",\r\n    \"email\": \"ftapara@unsa.edu.pe\",\r\n    \"password\": \"@ftapara/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Samir\",\r\n    \"lastname\": \"Chavez\",\r\n    \"username\": \"schavez\",\r\n    \"email\": \"schavez@unsa.edu.pe\",\r\n    \"password\": \"@schavez/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}/{{users}}/1",
+									"host": [
+										"{{cloud}"
+									],
+									"path": [
+										"{{users}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Eduardo\",\r\n    \"lastname\": \"Jove\",\r\n    \"username\": \"ejove\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{users}}/2",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Suppliers",
+					"item": [
+						{
+							"name": "Get Suppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Supplier",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Tottus\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Supplier By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/11",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Supplier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Random Supplier\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/2/inactivate",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"2",
+										"inactivate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/2/reactivate",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"2",
+										"reactivate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Erick\",\r\n    \"lastname\": \"Anco\",\r\n    \"username\": \"eanco\",\r\n    \"email\": \"eanco@unsa.edu.pe\",\r\n    \"password\": \"@eanco/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/register",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"ahincho\",\r\n    \"password\": \"@ahincho/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/login",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"eanco\",\r\n    \"password\": \"@eanco/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/login",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
@@ -590,6 +1136,11 @@
 			"type": "string"
 		},
 		{
+			"key": "cloud",
+			"value": "https://suppliers-ksiq.onrender.com",
+			"type": "string"
+		},
+		{
 			"key": "roles",
 			"value": "api/roles",
 			"type": "string"
@@ -611,7 +1162,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhaGluY2hvIiwiaWF0IjoxNzAzNjk5ODc3LCJleHAiOjE3MDM3ODYyNzd9.GCZdJTZm6kwQO8s_gdFlOgI0j99lFhgJ_BG671Mwngk",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlYW5jbyIsImlhdCI6MTcwMzcwNzc3NywiZXhwIjoxNzAzNzk0MTc3fQ.F4HGTqtKjOTVzp_leCrBw1vTrQfYdekvZpIKYWG1q-k",
 			"type": "string"
 		}
 	]
