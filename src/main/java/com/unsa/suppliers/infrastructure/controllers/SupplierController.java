@@ -4,10 +4,11 @@ import com.unsa.suppliers.application.services.SupplierService;
 import com.unsa.suppliers.domain.dtos.suppliers.SupplierRequest;
 import com.unsa.suppliers.domain.dtos.suppliers.SupplierResponse;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
+import com.unsa.suppliers.domain.exceptions.categories.CategoryNotFoundException;
+import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
 import com.unsa.suppliers.domain.exceptions.states.StateNotFoundException;
-import com.unsa.suppliers.domain.exceptions.suppliers.SupplierDuplicatedException;
-import com.unsa.suppliers.domain.exceptions.suppliers.SupplierNotFoundException;
-import com.unsa.suppliers.domain.mappers.SupplierMapper;
+import com.unsa.suppliers.domain.exceptions.suppliers.*;
+import com.unsa.suppliers.application.mappers.SupplierMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,33 +21,35 @@ import java.util.List;
 @RequestMapping("/api/suppliers")
 public class SupplierController {
     private final SupplierService supplierService;
-    public SupplierController(SupplierService supplierService) {
+    private final SupplierMapper supplierMapper;
+    public SupplierController(SupplierService supplierService, SupplierMapper supplierMapper) {
         this.supplierService = supplierService;
+        this.supplierMapper = supplierMapper;
     }
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<List<SupplierResponse>> getAll() {
         List<SupplierEntity> supplierEntities = supplierService.getAllSuppliers();
         if (supplierEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
-        return ResponseEntity.ok(supplierEntities.stream().map(SupplierMapper::entityToResponse).toList());
+        return ResponseEntity.ok(supplierEntities.stream().map(supplierMapper::entityToResponse).toList());
     }
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<SupplierResponse> getById(@PathVariable("id") Integer id) throws SupplierNotFoundException {
         SupplierEntity supplierEntity = supplierService.findSupplierById(id);
-        return ResponseEntity.ok(SupplierMapper.entityToResponse(supplierEntity));
+        return ResponseEntity.ok(supplierMapper.entityToResponse(supplierEntity));
     }
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<SupplierResponse> save(@RequestBody @Valid SupplierRequest supplierRequest, UriComponentsBuilder uriComponentsBuilder) throws SupplierDuplicatedException, StateNotFoundException {
-        SupplierEntity supplierEntity = supplierService.createSupplier(SupplierMapper.requestToEntity(supplierRequest));
+    public ResponseEntity<SupplierResponse> save(@RequestBody @Valid SupplierRequest supplierRequest, UriComponentsBuilder uriComponentsBuilder) throws SupplierDuplicatedNameException, SupplierDuplicatedRucException, CategoryNotFoundException, CountryNotFoundException, StateNotFoundException {
+        SupplierEntity supplierEntity = supplierService.createSupplier(supplierMapper.requestToEntity(supplierRequest));
         URI uri = uriComponentsBuilder.path("/api/suppliers/{id}").buildAndExpand(supplierEntity.getId()).toUri();
-        return ResponseEntity.created(uri).body(SupplierMapper.entityToResponse(supplierEntity));
+        return ResponseEntity.created(uri).body(supplierMapper.entityToResponse(supplierEntity));
     }
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid SupplierRequest supplierRequest) throws SupplierNotFoundException, SupplierDuplicatedException {
-        supplierService.updateSupplier(id, SupplierMapper.requestToEntity(supplierRequest));
+    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid SupplierRequest supplierRequest) throws SupplierNotFoundException, SupplierDuplicatedNameException, SupplierDuplicatedRucException, CategoryNotFoundException, CountryNotFoundException {
+        supplierService.updateSupplier(id, supplierMapper.requestToEntity(supplierRequest));
         return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
