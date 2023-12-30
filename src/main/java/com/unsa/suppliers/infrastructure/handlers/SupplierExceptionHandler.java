@@ -1,6 +1,6 @@
 package com.unsa.suppliers.infrastructure.handlers;
 
-import com.unsa.suppliers.domain.exceptions.suppliers.SupplierDuplicatedException;
+import com.unsa.suppliers.domain.exceptions.suppliers.SupplierDuplicatedNameException;
 import com.unsa.suppliers.domain.exceptions.suppliers.SupplierNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ public class SupplierExceptionHandler {
     public ResponseEntity<Void> supplierNotFound() {
         return ResponseEntity.notFound().build();
     }
-    @ExceptionHandler(SupplierDuplicatedException.class)
+    @ExceptionHandler(SupplierDuplicatedNameException.class)
     public ResponseEntity<Void> supplierDuplicated() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
