@@ -8,7 +8,7 @@ VOLUME /tmp
 EXPOSE 8080
 ARG JAR_FILE=target/suppliers-1.1.jar
 ADD ${JAR_FILE} suppliers.jar
-LABEL name="springboot-colors"
+LABEL name="springboot-suppliers"
 LABEL authors="Angel Hincho"
 LABEL mainteiner="ahincho"
 COPY target/suppliers-1.1.jar suppliers.jar
