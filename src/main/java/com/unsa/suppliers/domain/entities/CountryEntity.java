@@ -1,9 +1,13 @@
 package com.unsa.suppliers.domain.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Table(name = "countries")
 @Entity(name = "country")
+@Setter @Getter @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CountryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
