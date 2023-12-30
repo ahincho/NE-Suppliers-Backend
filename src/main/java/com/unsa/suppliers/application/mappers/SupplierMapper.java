@@ -9,11 +9,10 @@ import com.unsa.suppliers.domain.exceptions.categories.CategoryNotFoundException
 import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
 import com.unsa.suppliers.domain.repositories.CategoryRepository;
 import com.unsa.suppliers.domain.repositories.CountryRepository;
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Component;
 import java.util.Optional;
 
-@Service
+@Component
 public class SupplierMapper {
     private final CategoryRepository categoryRepository;
     private final CountryRepository countryRepository;
