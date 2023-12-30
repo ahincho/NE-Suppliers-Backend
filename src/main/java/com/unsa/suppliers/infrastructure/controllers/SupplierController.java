@@ -26,9 +26,16 @@ public class SupplierController {
         this.supplierMapper = supplierMapper;
     }
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<SupplierResponse>> getAll() {
         List<SupplierEntity> supplierEntities = supplierService.getAllSuppliers();
+        if (supplierEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
+        return ResponseEntity.ok(supplierEntities.stream().map(supplierMapper::entityToResponse).toList());
+    }
+    @GetMapping("/active")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public ResponseEntity<List<SupplierResponse>> getActives() throws StateNotFoundException {
+        List<SupplierEntity> supplierEntities = supplierService.getAllActiveSuppliers();
         if (supplierEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
         return ResponseEntity.ok(supplierEntities.stream().map(supplierMapper::entityToResponse).toList());
     }

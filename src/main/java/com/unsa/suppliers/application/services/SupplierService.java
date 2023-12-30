@@ -22,6 +22,9 @@ public class SupplierService {
     public List<SupplierEntity> getAllSuppliers() {
         return supplierRepository.findAll();
     }
+    public List<SupplierEntity> getAllActiveSuppliers() throws StateNotFoundException {
+        return supplierRepository.findAllByStateId(findStateByNameOrThrowNotFoundException("ACTIVE").getId());
+    }
     public SupplierEntity findSupplierById(Integer id) throws SupplierNotFoundException {
         return recoverSupplierByIdOrThrowNotFoundException(id);
     }
@@ -38,9 +41,6 @@ public class SupplierService {
         supplierEntity.setId(id);
         supplierEntity.setState(supplier.getState());
         supplierRepository.save(supplierEntity);
-    }
-    public List<SupplierEntity> getAllActiveSuppliers() throws StateNotFoundException {
-        return supplierRepository.findAllByStateId(findStateByNameOrThrowNotFoundException("ACTIVE").getId());
     }
     @Transactional
     public void changeSupplierState(Integer id, String state) throws SupplierNotFoundException, StateNotFoundException {
