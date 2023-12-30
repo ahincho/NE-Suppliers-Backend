@@ -1,8 +1,7 @@
 package com.unsa.suppliers.infrastructure.controllers;
 
 import com.unsa.suppliers.application.services.SupplierService;
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierRequest;
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierResponse;
+import com.unsa.suppliers.domain.dtos.suppliers.*;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
 import com.unsa.suppliers.domain.exceptions.categories.CategoryNotFoundException;
 import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
@@ -12,8 +11,8 @@ import com.unsa.suppliers.application.mappers.SupplierMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
+import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
