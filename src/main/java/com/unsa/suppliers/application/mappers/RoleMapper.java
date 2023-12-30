@@ -1,4 +1,4 @@
-package com.unsa.suppliers.domain.mappers;
+package com.unsa.suppliers.application.mappers;
 
 import com.unsa.suppliers.domain.dtos.roles.RoleRequest;
 import com.unsa.suppliers.domain.dtos.roles.RoleResponse;
