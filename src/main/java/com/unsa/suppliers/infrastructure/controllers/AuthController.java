@@ -7,7 +7,7 @@ import com.unsa.suppliers.domain.entities.UserEntity;
 import com.unsa.suppliers.domain.exceptions.roles.RoleNotFoundException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedEmailException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameException;
-import com.unsa.suppliers.domain.mappers.UserMapper;
+import com.unsa.suppliers.application.mappers.UserMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

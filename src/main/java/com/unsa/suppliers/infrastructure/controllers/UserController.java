@@ -9,7 +9,7 @@ import com.unsa.suppliers.domain.exceptions.roles.RoleNotFoundException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedEmailException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameException;
 import com.unsa.suppliers.domain.exceptions.users.UserNotFoundException;
-import com.unsa.suppliers.domain.mappers.UserMapper;
+import com.unsa.suppliers.application.mappers.UserMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
