@@ -8,7 +8,7 @@ import lombok.*;
 @Setter @Getter @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
