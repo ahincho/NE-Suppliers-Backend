@@ -15,7 +15,7 @@ public class SupplierResponse {
     private Integer categoryId;
     private String categoryName;
     private Integer countryId;
-    private Integer countryName;
+    private String countryName;
     private Integer stateId;
     private String stateName;
 }
