@@ -24,6 +24,7 @@ public class SupplierMapper {
         return SupplierResponse.builder()
                 .id(supplierEntity.getId())
                 .name(supplierEntity.getName())
+                .ruc(supplierEntity.getRuc())
                 .categoryId(supplierEntity.getCategory().getId())
                 .categoryName(supplierEntity.getCategory().getName())
                 .countryId(supplierEntity.getCountry().getId())
