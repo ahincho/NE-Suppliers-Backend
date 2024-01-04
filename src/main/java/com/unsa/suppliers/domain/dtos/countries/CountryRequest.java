@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountryRequest {
-    @NotBlank(message = "Name field is required")
+    @NotBlank(message = "Country name is required")
     private String name;
 }

@@ -12,10 +12,7 @@ public class SupplierResponse {
     private Integer id;
     private String name;
     private String ruc;
-    private Integer categoryId;
-    private String categoryName;
-    private Integer countryId;
-    private String countryName;
-    private Integer stateId;
-    private String stateName;
+    private String category;
+    private String country;
+    private String state;
 }

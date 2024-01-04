@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SupplierRequest {
-    @NotBlank(message = "Name field is required")
+    @NotBlank(message = "Supplier name is required")
     private String name;
-    @NotBlank(message = "RUC field is required")
-    @Size(min = 11, max = 11, message = "RUC field must contain 11 characters")
+    @NotBlank(message = "RUC number is required")
+    @Size(min = 11, max = 11, message = "RUC number must contain 11 digits")
     private String ruc;
-    @NotNull(message = "Category field is required")
-    @Positive(message = "Category field must be greater than 0")
+    @NotNull(message = "Category identifier is required")
+    @Positive(message = "Category identifier must be greater than 0")
     private Integer categoryId;
-    @NotNull(message = "Country field is required")
-    @Positive(message = "Country field must be greater than 0")
+    @NotNull(message = "Country identifier is required")
+    @Positive(message = "Country identifier must be greater than 0")
     private Integer countryId;
 }
