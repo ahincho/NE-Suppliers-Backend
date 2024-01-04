@@ -25,12 +25,9 @@ public class SupplierMapper {
                 .id(supplierEntity.getId())
                 .name(supplierEntity.getName())
                 .ruc(supplierEntity.getRuc())
-                .categoryId(supplierEntity.getCategory().getId())
-                .categoryName(supplierEntity.getCategory().getName())
-                .countryId(supplierEntity.getCountry().getId())
-                .countryName(supplierEntity.getCountry().getName())
-                .stateId(supplierEntity.getState().getId())
-                .stateName(supplierEntity.getState().getName())
+                .category(supplierEntity.getCategory().getName())
+                .country(supplierEntity.getCountry().getName())
+                .state(supplierEntity.getState().getName())
                 .build();
     }
     public SupplierEntity requestToEntity(SupplierRequest supplierRequest) throws CategoryNotFoundException, CountryNotFoundException {
