@@ -4,9 +4,11 @@ import com.unsa.suppliers.domain.dtos.users.UserRequest;
 import com.unsa.suppliers.domain.dtos.users.UserResponse;
 import com.unsa.suppliers.domain.dtos.users.UserUpdateRequest;
 import com.unsa.suppliers.domain.entities.UserEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
-    public static UserResponse entityToResponse(UserEntity userEntity) {
+    public UserResponse entityToResponse(UserEntity userEntity) {
         return UserResponse.builder()
                 .id(userEntity.getId())
                 .name(userEntity.getName())
@@ -14,7 +16,7 @@ public class UserMapper {
                 .username(userEntity.getUsername())
                 .build();
     }
-    public static UserEntity requestToEntity(UserRequest userRequest) {
+    public UserEntity requestToEntity(UserRequest userRequest) {
         return UserEntity.builder()
                 .name(userRequest.getName())
                 .lastname(userRequest.getLastname())
@@ -23,7 +25,7 @@ public class UserMapper {
                 .password(userRequest.getPassword())
                 .build();
     }
-    public static UserEntity updateRequestToEntity(UserUpdateRequest userUpdateRequest) {
+    public UserEntity updateRequestToEntity(UserUpdateRequest userUpdateRequest) {
         return UserEntity.builder()
                 .name(userUpdateRequest.getName())
                 .lastname(userUpdateRequest.getLastname())
