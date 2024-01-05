@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class CountryResponse {
     private Integer id;
     private String name;
+    private String state;
 }
