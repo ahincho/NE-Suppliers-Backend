@@ -12,7 +12,6 @@ import com.unsa.suppliers.domain.repositories.StateRepository;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -30,8 +29,7 @@ public class CategoryService {
     }
     @Transactional
     public CategoryEntity createCategory(CategoryEntity categoryEntity) throws CategoryDuplicatedException, StateNotFoundException {
-        Optional<CategoryEntity> optionalCategory = categoryRepository.findByName(categoryEntity.getName());
-        if (optionalCategory.isPresent()) { throw new CategoryDuplicatedException(); }
+        if (categoryRepository.existsByName(categoryEntity.getName())) { throw new CategoryDuplicatedException(); }
         StateEntity stateEntity = stateRepository.findByName(ACTIVE_STATE).orElseThrow(StateNotFoundException::new);
         categoryEntity.setState(stateEntity);
         return categoryRepository.save(categoryEntity);
@@ -40,8 +38,7 @@ public class CategoryService {
     public void updateCategory(Integer id, CategoryEntity categoryEntity) throws CategoryNotFoundException, CategoryDuplicatedException {
         CategoryEntity optionalCategory = categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
         if (!optionalCategory.getName().equals(categoryEntity.getName())) {
-            Optional<CategoryEntity> optionalCategoryName = categoryRepository.findByName(categoryEntity.getName());
-            if (optionalCategoryName.isPresent()) { throw new CategoryDuplicatedException(); }
+            if (categoryRepository.existsByName(categoryEntity.getName())) { throw new CategoryDuplicatedException(); }
         }
         categoryEntity.setId(id);
         categoryRepository.save(categoryEntity);
