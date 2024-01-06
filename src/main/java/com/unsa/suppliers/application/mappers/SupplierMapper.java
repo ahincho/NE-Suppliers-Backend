@@ -1,7 +1,6 @@
 package com.unsa.suppliers.application.mappers;
 
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierRequest;
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierResponse;
+import com.unsa.suppliers.domain.dtos.suppliers.*;
 import com.unsa.suppliers.domain.entities.CategoryEntity;
 import com.unsa.suppliers.domain.entities.CountryEntity;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
@@ -10,7 +9,6 @@ import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
 import com.unsa.suppliers.domain.repositories.CategoryRepository;
 import com.unsa.suppliers.domain.repositories.CountryRepository;
 import org.springframework.stereotype.Component;
-import java.util.Optional;
 
 @Component
 public class SupplierMapper {
@@ -34,19 +32,15 @@ public class SupplierMapper {
         return SupplierEntity.builder()
                 .name(supplierRequest.getName())
                 .ruc(supplierRequest.getRuc())
-                .category(findCategoryByIdOrThrowNotFound(supplierRequest.getCategoryId()))
-                .country(findCountryByIdOrThrowNotFound(supplierRequest.getCountryId()))
+                .category(findCategoryById(supplierRequest.getCategoryId()))
+                .country(findCountryById(supplierRequest.getCountryId()))
                 .build();
     }
     // Private Auxiliary Methods because Boiler Code
-    private CategoryEntity findCategoryByIdOrThrowNotFound(Integer id) throws CategoryNotFoundException {
-        Optional<CategoryEntity> optionalCategory = categoryRepository.findById(id);
-        if (optionalCategory.isEmpty()) { throw new CategoryNotFoundException(); }
-        return optionalCategory.get();
+    private CategoryEntity findCategoryById(Integer id) throws CategoryNotFoundException {
+        return categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
     }
-    private CountryEntity findCountryByIdOrThrowNotFound(Integer id) throws CountryNotFoundException {
-        Optional<CountryEntity> optionalCountry = countryRepository.findById(id);
-        if (optionalCountry.isEmpty()) { throw new CountryNotFoundException(); }
-        return optionalCountry.get();
+    private CountryEntity findCountryById(Integer id) throws CountryNotFoundException {
+        return countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
     }
 }
