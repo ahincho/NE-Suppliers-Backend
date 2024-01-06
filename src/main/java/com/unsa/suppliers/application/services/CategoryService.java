@@ -37,8 +37,8 @@ public class CategoryService {
     @Transactional
     public void updateCategory(Integer id, CategoryEntity categoryEntity) throws CategoryNotFoundException, CategoryDuplicatedException {
         CategoryEntity optionalCategory = categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
-        if (!optionalCategory.getName().equals(categoryEntity.getName())) {
-            if (categoryRepository.existsByName(categoryEntity.getName())) { throw new CategoryDuplicatedException(); }
+        if (!optionalCategory.getName().equals(categoryEntity.getName()) && categoryRepository.existsByName(categoryEntity.getName())) {
+            throw new CategoryDuplicatedException();
         }
         categoryEntity.setId(id);
         categoryRepository.save(categoryEntity);
