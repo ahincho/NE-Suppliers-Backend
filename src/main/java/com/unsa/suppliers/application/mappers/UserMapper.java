@@ -30,6 +30,7 @@ public class UserMapper {
                 .name(userUpdateRequest.getName())
                 .lastname(userUpdateRequest.getLastname())
                 .username(userUpdateRequest.getUsername())
+                .email(userUpdateRequest.getEmail())
                 .build();
     }
 }
