@@ -5,7 +5,6 @@ import com.unsa.suppliers.domain.exceptions.states.*;
 import com.unsa.suppliers.domain.repositories.StateRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StateService {
@@ -32,7 +31,7 @@ public class StateService {
             throw new StateDuplicatedException();
         }
         stateEntity.setId(id);
-        this.stateRepository.save(stateEntity);
+        stateRepository.save(stateEntity);
     }
     public void deleteState(Integer id) throws StateNotFoundException, StateInUseException {
         StateEntity stateEntity = stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
