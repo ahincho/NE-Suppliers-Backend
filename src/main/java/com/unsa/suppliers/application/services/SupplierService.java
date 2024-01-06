@@ -40,11 +40,11 @@ public class SupplierService {
     @Transactional
     public void updateSupplier(Integer id, SupplierEntity supplierEntity) throws SupplierNotFoundException, SupplierDuplicatedNameException, SupplierDuplicatedRucException {
         SupplierEntity existingSupplier = supplierRepository.findById(id).orElseThrow(SupplierNotFoundException::new);
-        if (!existingSupplier.getName().equals(supplierEntity.getName())) {
-            if (supplierRepository.existsByName(supplierEntity.getName())) { throw new SupplierDuplicatedNameException(); }
+        if (!existingSupplier.getName().equals(supplierEntity.getName()) && supplierRepository.existsByName(supplierEntity.getName())) {
+            throw new SupplierDuplicatedNameException();
         }
-        if (!existingSupplier.getRuc().equals(supplierEntity.getRuc())) {
-            if (supplierRepository.existsByRuc(supplierEntity.getRuc())) { throw new SupplierDuplicatedRucException(); }
+        if (!existingSupplier.getRuc().equals(supplierEntity.getRuc()) && supplierRepository.existsByRuc(supplierEntity.getRuc())) {
+            throw new SupplierDuplicatedRucException();
         }
         supplierEntity.setId(id);
         supplierEntity.setState(existingSupplier.getState());
