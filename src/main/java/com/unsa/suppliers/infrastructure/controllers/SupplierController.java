@@ -66,13 +66,13 @@ public class SupplierController {
         supplierService.changeSupplierState(id, DELETED_STATE);
         return ResponseEntity.noContent().build();
     }
-    @PatchMapping("/{id}/inactivate")
+    @PatchMapping("/{id}/disable")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> inactivate(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
         supplierService.changeSupplierState(id, DISABLED_STATE);
         return ResponseEntity.noContent().build();
     }
-    @PatchMapping("/{id}/reactivate")
+    @PatchMapping("/{id}/enable")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> reactivate(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
         supplierService.changeSupplierState(id, ACTIVE_STATE);
