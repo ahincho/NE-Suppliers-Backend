@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserRequest {
     @NotBlank(message = "User name is required")
-    @Size(min = 3, message = "User name must contain at least 3 characters")
+    @Size(min = 2, message = "User name must contain at least 2 characters")
     private String name;
     @NotBlank(message = "User lastname is required")
-    @Size(min = 3, message = "User lastname must contain at least 3 characters")
+    @Size(min = 2, message = "User lastname must contain at least 2 characters")
     private String lastname;
     @NotBlank(message = "User username or nickname is required")
     @Size(min = 4, message = "User username or nickname must contain at least 4 characters")
