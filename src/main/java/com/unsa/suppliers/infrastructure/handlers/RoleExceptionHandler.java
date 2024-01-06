@@ -1,6 +1,7 @@
 package com.unsa.suppliers.infrastructure.handlers;
 
 import com.unsa.suppliers.domain.exceptions.roles.RoleDuplicatedException;
+import com.unsa.suppliers.domain.exceptions.roles.RoleInUseException;
 import com.unsa.suppliers.domain.exceptions.roles.RoleNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ public class RoleExceptionHandler {
     public ResponseEntity<Void> roleNotFound() {
         return ResponseEntity.notFound().build();
     }
-    @ExceptionHandler(RoleDuplicatedException.class)
+    @ExceptionHandler({RoleDuplicatedException.class, RoleInUseException.class})
     public ResponseEntity<Void> roleDuplicated() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
