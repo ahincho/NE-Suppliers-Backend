@@ -9,7 +9,6 @@ import com.unsa.suppliers.domain.repositories.StateRepository;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CountryService {
@@ -27,16 +26,14 @@ public class CountryService {
     }
     @Transactional
     public CountryEntity createCountry(CountryEntity countryEntity) throws CountryDuplicatedException {
-        Optional<CountryEntity> optionalCountry = countryRepository.findByName(countryEntity.getName());
-        if (optionalCountry.isPresent()) { throw new CountryDuplicatedException(); }
+        if (countryRepository.existsByName(countryEntity.getName())) { throw new CountryDuplicatedException(); }
         return countryRepository.save(countryEntity);
     }
     @Transactional
     public void updateCountry(Integer id, CountryEntity countryEntity) throws CountryNotFoundException, CountryDuplicatedException {
         CountryEntity optionalCountry = countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
-        if (!optionalCountry.getName().equals(countryEntity.getName())) {
-            Optional<CountryEntity> optionalCountryName = countryRepository.findByName(countryEntity.getName());
-            if (optionalCountryName.isPresent()) { throw new CountryDuplicatedException(); }
+        if (!optionalCountry.getName().equals(countryEntity.getName()) && countryRepository.existsByName(countryEntity.getName())) {
+            { throw new CountryDuplicatedException(); }
         }
         countryEntity.setId(id);
         countryRepository.save(countryEntity);
