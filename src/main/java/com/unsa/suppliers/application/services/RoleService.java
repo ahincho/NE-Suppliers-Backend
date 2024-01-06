@@ -8,7 +8,6 @@ import com.unsa.suppliers.domain.repositories.RoleRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RoleService {
@@ -26,16 +25,14 @@ public class RoleService {
     }
     @Transactional
     public RoleEntity createRole(RoleEntity roleEntity) throws RoleDuplicatedException {
-        Optional<RoleEntity> optionalRole = roleRepository.findByName(roleEntity.getName());
-        if (optionalRole.isPresent()) { throw new RoleDuplicatedException(); }
+        if (roleRepository.existsByName(roleEntity.getName())) { throw new RoleDuplicatedException(); }
         return roleRepository.save(roleEntity);
     }
     @Transactional
     public void updateRole(Integer id, RoleEntity roleEntity) throws RoleNotFoundException, RoleDuplicatedException {
         RoleEntity optionalRole = roleRepository.findById(id).orElseThrow(RoleNotFoundException::new);
-        if (!optionalRole.getName().equals(roleEntity.getName())) {
-            Optional<RoleEntity> optionalRoleName = roleRepository.findByName(roleEntity.getName());
-            if (optionalRoleName.isPresent()) { throw new RoleDuplicatedException(); }
+        if (!optionalRole.getName().equals(roleEntity.getName()) && roleRepository.existsByName(roleEntity.getName())) {
+            throw new RoleDuplicatedException();
         }
         roleEntity.setId(id);
         roleRepository.save(roleEntity);
