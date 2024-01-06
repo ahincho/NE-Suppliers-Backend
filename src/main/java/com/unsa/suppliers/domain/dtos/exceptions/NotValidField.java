@@ -1,4 +1,4 @@
-package com.unsa.suppliers.infrastructure.handlers;
+package com.unsa.suppliers.domain.dtos.exceptions;
 
 import org.springframework.validation.FieldError;
 

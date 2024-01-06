@@ -19,12 +19,14 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/auth")
 public class AuthController {
     private final UserService userService;
-    public AuthController(UserService userService) {
+    private final UserMapper userMapper;
+    public AuthController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
+        this.userMapper = userMapper;
     }
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@RequestBody @Valid UserRequest userRequest) throws UserDuplicatedEmailException, UserDuplicatedUsernameException, RoleNotFoundException {
-        UserEntity savedUserEntity = userService.createUser(UserMapper.requestToEntity(userRequest));
-        return ResponseEntity.ok(UserMapper.entityToResponse(savedUserEntity));
+        UserEntity savedUserEntity = userService.createUser(userMapper.requestToEntity(userRequest));
+        return ResponseEntity.ok(userMapper.entityToResponse(savedUserEntity));
     }
 }

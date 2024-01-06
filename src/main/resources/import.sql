@@ -8,9 +8,9 @@ INSERT INTO users (id, name, lastname, username, email, password) VALUES (1, "An
 INSERT INTO users_roles (role_id, user_id) VALUES (1, 1);
 -- TABLES RELATED TO THE BUSINESS DOMAIN
 -- Data for States Table
-INSERT INTO states (id, name) VALUES (1, "ACTIVE");
-INSERT INTO states (id, name) VALUES (2, "INACTIVE");
-INSERT INTO states (id, name) VALUES (3, "DELETED");
+INSERT INTO states (id, name) VALUES (1, "Active");
+INSERT INTO states (id, name) VALUES (2, "Disabled");
+INSERT INTO states (id, name) VALUES (3, "Deleted");
 -- Data for Country Table
 -- Data Recovered from: http://lanic.utexas.edu/subject/countries/indexesp.html
 INSERT INTO countries (id, name, state_id) VALUES (1, "Peru", 1);

@@ -1,5 +1,6 @@
 package com.unsa.suppliers.infrastructure.handlers;
 
+import com.unsa.suppliers.domain.exceptions.countries.CountryDuplicatedException;
 import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ public class CountryExceptionHandler {
     public ResponseEntity<Void> countryNotFound() {
         return ResponseEntity.notFound().build();
     }
+    @ExceptionHandler(CountryDuplicatedException.class)
     public ResponseEntity<Void> countryDuplicated() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }

@@ -1,5 +1,6 @@
 package com.unsa.suppliers.infrastructure.handlers;
 
+import com.unsa.suppliers.domain.dtos.exceptions.NotValidField;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
