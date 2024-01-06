@@ -43,10 +43,9 @@ public class RoleService {
     @Transactional
     public void deleteRole(Integer id) throws RoleNotFoundException, RoleInUseException {
         RoleEntity roleEntity = roleRepository.findById(id).orElseThrow(RoleNotFoundException::new);
-        if (!roleEntity.getName().equals(USER_ROLE) && !roleEntity.getName().equals(ADMIN_ROLE)) {
-            roleRepository.deleteById(id);
-        } else {
-            throw new RoleInUseException();
+        switch (roleEntity.getName()) {
+            case USER_ROLE, ADMIN_ROLE -> throw new RoleInUseException();
+            default -> roleRepository.deleteById(id);
         }
     }
 }
