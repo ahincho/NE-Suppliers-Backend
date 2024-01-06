@@ -23,15 +23,13 @@ public class StateService {
         return stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
     }
     public StateEntity createState(StateEntity stateEntity) throws StateDuplicatedException {
-        Optional<StateEntity> optionalState = stateRepository.findByName(stateEntity.getName());
-        if (optionalState.isPresent()) { throw new StateDuplicatedException(); }
+        if (stateRepository.existsByName(stateEntity.getName())) { throw new StateDuplicatedException(); }
         return stateRepository.save(stateEntity);
     }
     public void updateState(Integer id, StateEntity stateEntity) throws StateNotFoundException, StateDuplicatedException {
         StateEntity optionalState = stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
-        if (!optionalState.getName().equals(stateEntity.getName())) {
-            Optional<StateEntity> optionalStateName = stateRepository.findByName(stateEntity.getName());
-            if (optionalStateName.isPresent()) { throw new StateDuplicatedException(); }
+        if (!optionalState.getName().equals(stateEntity.getName()) && stateRepository.existsByName(stateEntity.getName())) {
+            throw new StateDuplicatedException();
         }
         stateEntity.setId(id);
         this.stateRepository.save(stateEntity);
