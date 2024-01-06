@@ -1,5 +1,7 @@
 package com.unsa.suppliers.application.services;
 
+import static com.unsa.suppliers.application.services.StateService.ACTIVE_STATE;
+
 import com.unsa.suppliers.domain.entities.StateEntity;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
 import com.unsa.suppliers.domain.exceptions.states.StateNotFoundException;
@@ -9,7 +11,6 @@ import com.unsa.suppliers.domain.repositories.SupplierRepository;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SupplierService {
@@ -23,44 +24,37 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
     public List<SupplierEntity> getAllActiveSuppliers() throws StateNotFoundException {
-        return supplierRepository.findAllByStateId(findStateByNameOrThrowNotFoundException("ACTIVE").getId());
+        StateEntity stateEntity = stateRepository.findByName(ACTIVE_STATE).orElseThrow(StateNotFoundException::new);
+        return supplierRepository.findAllByStateId(stateEntity.getId());
     }
     public SupplierEntity findSupplierById(Integer id) throws SupplierNotFoundException {
-        return recoverSupplierByIdOrThrowNotFoundException(id);
+        return supplierRepository.findById(id).orElseThrow(SupplierNotFoundException::new);
     }
     @Transactional
     public SupplierEntity createSupplier(SupplierEntity supplierEntity) throws SupplierDuplicatedNameException, SupplierDuplicatedRucException, StateNotFoundException {
-        throwExceptionsIfIsDuplicated(supplierEntity);
-        supplierEntity.setState(findStateByNameOrThrowNotFoundException("ACTIVE"));
+        if (supplierRepository.existsByName(supplierEntity.getName())) { throw new SupplierDuplicatedNameException(); }
+        if (supplierRepository.existsByRuc(supplierEntity.getRuc())) { throw new SupplierDuplicatedRucException(); }
+        supplierEntity.setState(stateRepository.findByName(ACTIVE_STATE).orElseThrow(StateNotFoundException::new));
         return supplierRepository.save(supplierEntity);
     }
     @Transactional
     public void updateSupplier(Integer id, SupplierEntity supplierEntity) throws SupplierNotFoundException, SupplierDuplicatedNameException, SupplierDuplicatedRucException {
-        SupplierEntity supplier = recoverSupplierByIdOrThrowNotFoundException(id);
-        throwExceptionsIfIsDuplicated(supplierEntity);
+        SupplierEntity existingSupplier = supplierRepository.findById(id).orElseThrow(SupplierNotFoundException::new);
+        if (!existingSupplier.getName().equals(supplierEntity.getName())) {
+            if (supplierRepository.existsByName(supplierEntity.getName())) { throw new SupplierDuplicatedNameException(); }
+        }
+        if (!existingSupplier.getRuc().equals(supplierEntity.getRuc())) {
+            if (supplierRepository.existsByRuc(supplierEntity.getRuc())) { throw new SupplierDuplicatedRucException(); }
+        }
         supplierEntity.setId(id);
-        supplierEntity.setState(supplier.getState());
+        supplierEntity.setState(existingSupplier.getState());
         supplierRepository.save(supplierEntity);
     }
     @Transactional
     public void changeSupplierState(Integer id, String state) throws SupplierNotFoundException, StateNotFoundException {
-        SupplierEntity supplierEntity = recoverSupplierByIdOrThrowNotFoundException(id);
-        supplierEntity.setState(findStateByNameOrThrowNotFoundException(state));
+        SupplierEntity supplierEntity = supplierRepository.findById(id).orElseThrow(SupplierNotFoundException::new);
+        StateEntity stateEntity = stateRepository.findByName(state).orElseThrow(StateNotFoundException::new);
+        supplierEntity.setState(stateEntity);
         supplierRepository.save(supplierEntity);
-    }
-    // Private Auxiliary Methods because Boiler Code
-    private SupplierEntity recoverSupplierByIdOrThrowNotFoundException(Integer id) throws SupplierNotFoundException {
-        Optional<SupplierEntity> optionalSupplier = supplierRepository.findById(id);
-        if (optionalSupplier.isEmpty()) { throw new SupplierNotFoundException(); }
-        return optionalSupplier.get();
-    }
-    private void throwExceptionsIfIsDuplicated(SupplierEntity supplierEntity) throws SupplierDuplicatedNameException, SupplierDuplicatedRucException {
-        if (supplierRepository.existsByName(supplierEntity.getName())) { throw new SupplierDuplicatedNameException(); }
-        if (supplierRepository.existsByRuc(supplierEntity.getRuc())) { throw new SupplierDuplicatedRucException(); }
-    }
-    private StateEntity findStateByNameOrThrowNotFoundException(String name) throws StateNotFoundException {
-        Optional<StateEntity> optionalState = stateRepository.findByName(name);
-        if (optionalState.isEmpty()) { throw new StateNotFoundException(); }
-        return optionalState.get();
     }
 }
