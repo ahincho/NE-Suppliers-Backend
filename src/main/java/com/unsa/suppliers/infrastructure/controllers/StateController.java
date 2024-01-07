@@ -48,12 +48,12 @@ public class StateController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid StateRequest stateRequest) throws StateNotFoundException, StateDuplicatedException {
         stateService.updateState(id, stateMapper.requestToEntity(stateRequest));
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws StateInUseException, StateNotFoundException {
         stateService.deleteState(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }

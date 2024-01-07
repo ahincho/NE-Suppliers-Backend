@@ -50,23 +50,23 @@ public class CountryController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid CountryRequest countryRequest) throws CountryDuplicatedException, CountryNotFoundException {
         countryService.updateCountry(id, countryMapper.requestToEntity(countryRequest));
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws StateNotFoundException, CountryNotFoundException {
         countryService.changeCountryState(id, DELETED_STATE);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/disable/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> disable(@PathVariable("id") Integer id) throws StateNotFoundException, CountryNotFoundException {
         countryService.changeCountryState(id, DISABLED_STATE);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @PatchMapping("/enable/{id}")
     public ResponseEntity<Void> reactivate(@PathVariable("id") Integer id) throws StateNotFoundException, CountryNotFoundException {
         countryService.changeCountryState(id, ACTIVE_STATE);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }
