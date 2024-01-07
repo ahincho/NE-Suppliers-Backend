@@ -1,18 +1,20 @@
 package com.unsa.suppliers.infrastructure.controllers;
 
+import static com.unsa.suppliers.application.services.StateService.*;
+
 import com.unsa.suppliers.application.services.SupplierService;
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierRequest;
-import com.unsa.suppliers.domain.dtos.suppliers.SupplierResponse;
+import com.unsa.suppliers.domain.dtos.suppliers.*;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
+import com.unsa.suppliers.domain.exceptions.categories.CategoryNotFoundException;
+import com.unsa.suppliers.domain.exceptions.countries.CountryNotFoundException;
 import com.unsa.suppliers.domain.exceptions.states.StateNotFoundException;
-import com.unsa.suppliers.domain.exceptions.suppliers.SupplierDuplicatedException;
-import com.unsa.suppliers.domain.exceptions.suppliers.SupplierNotFoundException;
-import com.unsa.suppliers.domain.mappers.SupplierMapper;
+import com.unsa.suppliers.domain.exceptions.suppliers.*;
+import com.unsa.suppliers.application.mappers.SupplierMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
+import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -20,51 +22,60 @@ import java.util.List;
 @RequestMapping("/api/suppliers")
 public class SupplierController {
     private final SupplierService supplierService;
-    public SupplierController(SupplierService supplierService) {
+    private final SupplierMapper supplierMapper;
+    public SupplierController(SupplierService supplierService, SupplierMapper supplierMapper) {
         this.supplierService = supplierService;
+        this.supplierMapper = supplierMapper;
     }
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<List<SupplierResponse>> getAll() {
         List<SupplierEntity> supplierEntities = supplierService.getAllSuppliers();
         if (supplierEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
-        return ResponseEntity.ok(supplierEntities.stream().map(SupplierMapper::entityToResponse).toList());
+        return ResponseEntity.ok(supplierEntities.stream().map(supplierMapper::entityToResponse).toList());
+    }
+    @GetMapping("/active")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public ResponseEntity<List<SupplierResponse>> getActives() throws StateNotFoundException {
+        List<SupplierEntity> supplierEntities = supplierService.getAllActiveSuppliers();
+        if (supplierEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
+        return ResponseEntity.ok(supplierEntities.stream().map(supplierMapper::entityToResponse).toList());
     }
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<SupplierResponse> getById(@PathVariable("id") Integer id) throws SupplierNotFoundException {
         SupplierEntity supplierEntity = supplierService.findSupplierById(id);
-        return ResponseEntity.ok(SupplierMapper.entityToResponse(supplierEntity));
+        return ResponseEntity.ok(supplierMapper.entityToResponse(supplierEntity));
     }
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<SupplierResponse> save(@RequestBody @Valid SupplierRequest supplierRequest, UriComponentsBuilder uriComponentsBuilder) throws SupplierDuplicatedException, StateNotFoundException {
-        SupplierEntity supplierEntity = supplierService.createSupplier(SupplierMapper.requestToEntity(supplierRequest));
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public ResponseEntity<SupplierResponse> save(@RequestBody @Valid SupplierRequest supplierRequest, UriComponentsBuilder uriComponentsBuilder) throws SupplierDuplicatedNameException, SupplierDuplicatedRucException, CategoryNotFoundException, CountryNotFoundException, StateNotFoundException {
+        SupplierEntity supplierEntity = supplierService.createSupplier(supplierMapper.requestToEntity(supplierRequest));
         URI uri = uriComponentsBuilder.path("/api/suppliers/{id}").buildAndExpand(supplierEntity.getId()).toUri();
-        return ResponseEntity.created(uri).body(SupplierMapper.entityToResponse(supplierEntity));
+        return ResponseEntity.created(uri).body(supplierMapper.entityToResponse(supplierEntity));
     }
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid SupplierRequest supplierRequest) throws SupplierNotFoundException, SupplierDuplicatedException {
-        supplierService.updateSupplier(id, SupplierMapper.requestToEntity(supplierRequest));
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid SupplierRequest supplierRequest) throws SupplierNotFoundException, SupplierDuplicatedNameException, SupplierDuplicatedRucException, CategoryNotFoundException, CountryNotFoundException {
+        supplierService.updateSupplier(id, supplierMapper.requestToEntity(supplierRequest));
         return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
-        supplierService.changeSupplierState(id, "DELETED");
+        supplierService.changeSupplierState(id, DELETED_STATE);
         return ResponseEntity.noContent().build();
     }
-    @PatchMapping("/{id}/inactivate")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/disable/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> inactivate(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
-        supplierService.changeSupplierState(id, "INACTIVE");
+        supplierService.changeSupplierState(id, DISABLED_STATE);
         return ResponseEntity.noContent().build();
     }
-    @PatchMapping("/{id}/reactivate")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/enable/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> reactivate(@PathVariable("id") Integer id) throws SupplierNotFoundException, StateNotFoundException {
-        supplierService.changeSupplierState(id, "ACTIVE");
+        supplierService.changeSupplierState(id, ACTIVE_STATE);
         return ResponseEntity.noContent().build();
     }
 }

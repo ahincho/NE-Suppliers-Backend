@@ -1,0 +1,5 @@
+# Created at 2024-01-06T23:40:28.944
+Boot Manifest-JAR contains absolute paths in classpath 'D:\UNSA-Ingenieria-De-Sistemas\2023B\Negocios-Electronicos\Laboratorio\Octava-Practica\suppliers\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

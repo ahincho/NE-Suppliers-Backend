@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleRequest {
-    @NotBlank(message = "Name must not be blank")
+    @NotBlank(message = "Role name is required")
     private String name;
 }

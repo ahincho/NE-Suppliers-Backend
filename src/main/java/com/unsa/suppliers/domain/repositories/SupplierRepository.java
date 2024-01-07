@@ -3,10 +3,11 @@ package com.unsa.suppliers.domain.repositories;
 import com.unsa.suppliers.domain.entities.SupplierEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface SupplierRepository extends JpaRepository<SupplierEntity, Integer> {
-    Optional<SupplierEntity> findByName(String name);
-    Optional<SupplierEntity> findByStateId(Integer stateId);
+    boolean existsByName(String name);
+    boolean existsByRuc(String ruc);
+    List<SupplierEntity> findAllByStateId(Integer stateId);
 }

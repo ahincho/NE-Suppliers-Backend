@@ -9,7 +9,7 @@ import com.unsa.suppliers.domain.exceptions.roles.RoleNotFoundException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedEmailException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameException;
 import com.unsa.suppliers.domain.exceptions.users.UserNotFoundException;
-import com.unsa.suppliers.domain.mappers.UserMapper;
+import com.unsa.suppliers.application.mappers.UserMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -22,34 +22,36 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
-    public UserController(UserService userService) {
+    private final UserMapper userMapper;
+    public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
+        this.userMapper = userMapper;
     }
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserResponse>> getAll() {
         List<UserEntity> userEntities = userService.getAllUsers();
         if (userEntities.isEmpty()) { return ResponseEntity.noContent().build(); }
-        return ResponseEntity.ok(userEntities.stream().map(UserMapper::entityToResponse).toList());
+        return ResponseEntity.ok(userEntities.stream().map(userMapper::entityToResponse).toList());
     }
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserResponse> findById(@PathVariable("id") Integer id) throws UserNotFoundException {
         UserEntity userEntity = userService.findUserById(id);
-        return ResponseEntity.ok(UserMapper.entityToResponse(userEntity));
+        return ResponseEntity.ok(userMapper.entityToResponse(userEntity));
     }
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserResponse> save(@RequestBody @Valid UserRequest userRequest, UriComponentsBuilder uriComponentsBuilder) throws UserDuplicatedEmailException, UserDuplicatedUsernameException, RoleNotFoundException {
-        UserEntity savedUserEntity = userService.createUser(UserMapper.requestToEntity(userRequest));
+        UserEntity savedUserEntity = userService.createUser(userMapper.requestToEntity(userRequest));
         URI uri = uriComponentsBuilder.path("/api/users/{id}").buildAndExpand(savedUserEntity.getId()).toUri();
-        return ResponseEntity.created(uri).body(UserMapper.entityToResponse(savedUserEntity));
+        return ResponseEntity.created(uri).body(userMapper.entityToResponse(savedUserEntity));
     }
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) throws UserNotFoundException, UserDuplicatedUsernameException {
-        userService.updateUser(id, UserMapper.updateRequestToEntity(userUpdateRequest));
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) throws UserNotFoundException, UserDuplicatedUsernameException, UserDuplicatedEmailException {
+        userService.updateUser(id, userMapper.updateRequestToEntity(userUpdateRequest));
+        return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

@@ -15,12 +15,8 @@ public class UserExceptionHandler {
     public ResponseEntity<Void> userNotFound() {
         return ResponseEntity.notFound().build();
     }
-    @ExceptionHandler(UserDuplicatedEmailException.class)
-    public ResponseEntity<Void> userDuplicatedEmail() {
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
-    }
-    @ExceptionHandler(UserDuplicatedUsernameException.class)
-    public ResponseEntity<Void> userDuplicatedUsername() {
+    @ExceptionHandler({UserDuplicatedEmailException.class, UserDuplicatedUsernameException.class})
+    public ResponseEntity<Void> userDuplicated() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
     @ExceptionHandler(UsernameNotFoundException.class)

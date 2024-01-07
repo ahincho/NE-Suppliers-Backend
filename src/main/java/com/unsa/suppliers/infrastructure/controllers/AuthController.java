@@ -7,7 +7,7 @@ import com.unsa.suppliers.domain.entities.UserEntity;
 import com.unsa.suppliers.domain.exceptions.roles.RoleNotFoundException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedEmailException;
 import com.unsa.suppliers.domain.exceptions.users.UserDuplicatedUsernameException;
-import com.unsa.suppliers.domain.mappers.UserMapper;
+import com.unsa.suppliers.application.mappers.UserMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,12 +19,14 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/auth")
 public class AuthController {
     private final UserService userService;
-    public AuthController(UserService userService) {
+    private final UserMapper userMapper;
+    public AuthController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
+        this.userMapper = userMapper;
     }
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@RequestBody @Valid UserRequest userRequest) throws UserDuplicatedEmailException, UserDuplicatedUsernameException, RoleNotFoundException {
-        UserEntity savedUserEntity = userService.createUser(UserMapper.requestToEntity(userRequest));
-        return ResponseEntity.ok(UserMapper.entityToResponse(savedUserEntity));
+        UserEntity savedUserEntity = userService.createUser(userMapper.requestToEntity(userRequest));
+        return ResponseEntity.ok(userMapper.entityToResponse(savedUserEntity));
     }
 }

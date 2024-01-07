@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 public class SupplierResponse {
     private Integer id;
     private String name;
-    private Integer stateId;
-    private String stateName;
+    private String ruc;
+    private String category;
+    private String country;
+    private String state;
 }

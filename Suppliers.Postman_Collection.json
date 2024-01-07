@@ -10,429 +10,6 @@
 			"name": "Local",
 			"item": [
 				{
-					"name": "Roles",
-					"item": [
-						{
-							"name": "Get Roles",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{roles}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Role",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"WRITER\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{roles}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Role",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"VIEWER\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{roles}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Role By Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{roles}}/1",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Role",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"CONTENT_WRITER\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{roles}}/3",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}",
-										"3"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Role",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{roles}}/4",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{roles}}",
-										"4"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Users",
-					"item": [
-						{
-							"name": "Get Users",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{users}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create User",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Fabiola\",\r\n    \"lastname\": \"Taára\",\r\n    \"username\": \"ftapara\",\r\n    \"email\": \"ftapara@unsa.edu.pe\",\r\n    \"password\": \"@ftapara/dev@\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{users}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create User",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Samir\",\r\n    \"lastname\": \"Chavez\",\r\n    \"username\": \"schavez\",\r\n    \"email\": \"schavez@unsa.edu.pe\",\r\n    \"password\": \"@schavez/dev@\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{users}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get User By Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{users}}/1",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update User",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Eduardo\",\r\n    \"lastname\": \"Jove\",\r\n    \"username\": \"ejove\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{users}}/1",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete User",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{users}}/2",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{users}}",
-										"2"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Suppliers",
-					"item": [
-						{
-							"name": "Get Suppliers",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{suppliers}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Supplier",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Tottus\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{suppliers}}",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Supplier By Id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{suppliers}}/11",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}",
-										"11"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Supplier",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Random Supplier\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{local}}/{{suppliers}}/1",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Supplier",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{suppliers}}/1",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Inactivate Supplier",
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{suppliers}}/2/inactivate",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}",
-										"2",
-										"inactivate"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Reactivate Supplier",
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"url": {
-									"raw": "{{local}}/{{suppliers}}/2/reactivate",
-									"host": [
-										"{{local}}"
-									],
-									"path": [
-										"{{suppliers}}",
-										"2",
-										"reactivate"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Auth",
 					"item": [
 						{
@@ -549,6 +126,2015 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "States",
+					"item": [
+						{
+							"name": "Get States",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{states}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{states}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create State",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Hide\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{states}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{states}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get State By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{states}}/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{states}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update State",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Hidden\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{states}}/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{states}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete State",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{states}}/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{states}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Get Roles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{roles}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"WRITER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{roles}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"VIEWER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{roles}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Role By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{roles}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"DESIGNER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{roles}}/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Role",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{roles}}/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{roles}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{users}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fabiola\",\r\n    \"lastname\": \"Tapara\",\r\n    \"username\": \"ftapara\",\r\n    \"email\": \"ftapara@unsa.edu.pe\",\r\n    \"password\": \"@ftapara/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{users}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Samir\",\r\n    \"lastname\": \"Chavez\",\r\n    \"username\": \"schavez\",\r\n    \"email\": \"schavez@unsa.edu.pe\",\r\n    \"password\": \"@schavez/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{users}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{users}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Grissel\",\r\n    \"lastname\": \"Quispe\",\r\n    \"username\": \"gquispe\",\r\n    \"email\": \"gquispe@unsa.edu.pe\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{users}}/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{users}}/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{users}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"General Goods\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{categories}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/9",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Raw Materials\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{categories}}/9",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/disable/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"disable",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/disable/4",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"disable",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{categories}}/enable/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{categories}}",
+										"enable",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Countries",
+					"item": [
+						{
+							"name": "Get Countries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Country",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Canada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{countries}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Country By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/8",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Country",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Honduras\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{countries}}/6",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Country",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/5",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/disable/6",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"disable",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Country",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/7",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/disable/8",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"disable",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{countries}}/enable/6",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{countries}}",
+										"enable",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Suppliers",
+					"item": [
+						{
+							"name": "Get Suppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Supplier",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Tottus\",\r\n    \"ruc\": \"12345678901\",\r\n    \"categoryId\": 3,\r\n    \"countryId\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{suppliers}}",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Supplier By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/11",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Supplier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Makro\",\r\n    \"ruc\": \"20492092313\",\r\n    \"categoryId\": 2,\r\n    \"countryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/11",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/11",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/disable/10",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"disable",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/disable/2",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"disable",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/{{suppliers}}/enable/11",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"enable",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cloud",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Erick\",\r\n    \"lastname\": \"Anco\",\r\n    \"username\": \"eanco\",\r\n    \"email\": \"eanco@unsa.edu.pe\",\r\n    \"password\": \"@eanco/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/register",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"ahincho\",\r\n    \"password\": \"@ahincho/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/login",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"eanco\",\r\n    \"password\": \"@eanco/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{auth}}/login",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{auth}}",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "States",
+					"item": [
+						{
+							"name": "Get States",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{states}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{states}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create State",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Hide\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{states}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{states}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get State By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{states}}/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{states}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update State",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Hidden\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{states}}/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{states}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete State",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{states}}/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{states}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Get Roles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"WRITER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"VIEWER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Role By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"DESIGNER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Role",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{roles}}/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{roles}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Fabiola\",\r\n    \"lastname\": \"Tapara\",\r\n    \"username\": \"ftapara\",\r\n    \"email\": \"ftapara@unsa.edu.pe\",\r\n    \"password\": \"@ftapara/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Samir\",\r\n    \"lastname\": \"Chavez\",\r\n    \"username\": \"schavez\",\r\n    \"email\": \"schavez@unsa.edu.pe\",\r\n    \"password\": \"@schavez/dev@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{users}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Grissel\",\r\n    \"lastname\": \"Quispe\",\r\n    \"username\": \"gquispe\",\r\n    \"email\": \"gquispe@unsa.edu.pe\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{users}}/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{users}}/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{users}}",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"General Goods\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{categories}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/9",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Raw Materials\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/9",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/disable/2",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"disable",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/disable/4",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"disable",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{categories}}/enable/3",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{categories}}",
+										"enable",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Countries",
+					"item": [
+						{
+							"name": "Get Countries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Country",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Canada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{countries}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Country By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/8",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Country",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Honduras\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/6",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Country",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/5",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/disable/6",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"disable",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Country",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/7",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/disable/8",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"disable",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Country",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{countries}}/enable/6",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{countries}}",
+										"enable",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Suppliers",
+					"item": [
+						{
+							"name": "Get Suppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Supplier",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Tottus\",\r\n    \"ruc\": \"12345678901\",\r\n    \"categoryId\": 3,\r\n    \"countryId\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Supplier By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/11",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Supplier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Makro\",\r\n    \"ruc\": \"20492092313\",\r\n    \"categoryId\": 2,\r\n    \"countryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/11",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/11",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/disable/10",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"disable",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/1",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Inactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/disable/2",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"disable",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivate Supplier",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{cloud}}/{{suppliers}}/enable/11",
+									"host": [
+										"{{cloud}}"
+									],
+									"path": [
+										"{{suppliers}}",
+										"enable",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
@@ -586,7 +2172,22 @@
 	"variable": [
 		{
 			"key": "local",
-			"value": "localhost:8090",
+			"value": "localhost:10000",
+			"type": "string"
+		},
+		{
+			"key": "cloud",
+			"value": "suppliers-backend-testing.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "auth",
+			"value": "api/auth",
+			"type": "string"
+		},
+		{
+			"key": "states",
+			"value": "api/states",
 			"type": "string"
 		},
 		{
@@ -600,8 +2201,13 @@
 			"type": "string"
 		},
 		{
-			"key": "auth",
-			"value": "api/auth",
+			"key": "categories",
+			"value": "api/categories",
+			"type": "string"
+		},
+		{
+			"key": "countries",
+			"value": "api/countries",
 			"type": "string"
 		},
 		{
@@ -611,7 +2217,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhaGluY2hvIiwiaWF0IjoxNzAzNjk5ODc3LCJleHAiOjE3MDM3ODYyNzd9.GCZdJTZm6kwQO8s_gdFlOgI0j99lFhgJ_BG671Mwngk",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhaGluY2hvIiwiaWF0IjoxNzA0NTkyMTkyLCJleHAiOjE3MDQ2Nzg1OTJ9.o8PvlvJEcQWPNWC6R8DkKSpVHBLLzjCBuDyYw1kpoTU",
 			"type": "string"
 		}
 	]

@@ -1,6 +1,7 @@
 package com.unsa.suppliers.infrastructure.handlers;
 
 import com.unsa.suppliers.domain.exceptions.states.StateDuplicatedException;
+import com.unsa.suppliers.domain.exceptions.states.StateInUseException;
 import com.unsa.suppliers.domain.exceptions.states.StateNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ public class StateExceptionHandler {
     public ResponseEntity<Void> stateNotFound() {
         return ResponseEntity.notFound().build();
     }
-    @ExceptionHandler(StateDuplicatedException.class)
+    @ExceptionHandler({StateDuplicatedException.class, StateInUseException.class})
     public ResponseEntity<Void> stateDuplicated() {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
