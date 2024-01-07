@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
 
+import static com.unsa.suppliers.application.services.StateService.ACTIVE_STATE;
+
 @Service
 public class CountryService {
     private final CountryRepository countryRepository;
@@ -25,8 +27,10 @@ public class CountryService {
         return countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
     }
     @Transactional
-    public CountryEntity createCountry(CountryEntity countryEntity) throws CountryDuplicatedException {
+    public CountryEntity createCountry(CountryEntity countryEntity) throws CountryDuplicatedException, CountryNotFoundException {
         if (countryRepository.existsByName(countryEntity.getName())) { throw new CountryDuplicatedException(); }
+        StateEntity stateEntity = stateRepository.findByName(ACTIVE_STATE).orElseThrow(CountryNotFoundException::new);
+        countryEntity.setState(stateEntity);
         return countryRepository.save(countryEntity);
     }
     @Transactional
