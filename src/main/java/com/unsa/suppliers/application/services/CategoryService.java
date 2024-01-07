@@ -41,6 +41,7 @@ public class CategoryService {
             throw new CategoryDuplicatedException();
         }
         categoryEntity.setId(id);
+        categoryEntity.setState(optionalCategory.getState());
         categoryRepository.save(categoryEntity);
     }
     @Transactional
