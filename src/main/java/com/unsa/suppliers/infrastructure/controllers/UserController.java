@@ -51,7 +51,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) throws UserNotFoundException, UserDuplicatedUsernameException, UserDuplicatedEmailException {
         userService.updateUser(id, userMapper.updateRequestToEntity(userUpdateRequest));
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

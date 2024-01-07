@@ -49,12 +49,12 @@ public class RoleController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> update(@PathVariable("id") Integer id, @RequestBody @Valid RoleRequest roleRequest) throws RoleNotFoundException, RoleDuplicatedException {
         roleService.updateRole(id, roleMapper.requestToEntity(roleRequest));
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws RoleNotFoundException, RoleInUseException {
         roleService.deleteRole(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }
