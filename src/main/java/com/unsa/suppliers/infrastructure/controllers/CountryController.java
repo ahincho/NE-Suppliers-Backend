@@ -58,13 +58,13 @@ public class CountryController {
         countryService.changeCountryState(id, DELETED_STATE);
         return ResponseEntity.notFound().build();
     }
-    @PatchMapping("/{id}/disable")
+    @PatchMapping("/disable/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Void> disable(@PathVariable("id") Integer id) throws StateNotFoundException, CountryNotFoundException {
         countryService.changeCountryState(id, DISABLED_STATE);
         return ResponseEntity.notFound().build();
     }
-    @PatchMapping("/{id}/enable")
+    @PatchMapping("/enable/{id}")
     public ResponseEntity<Void> reactivate(@PathVariable("id") Integer id) throws StateNotFoundException, CountryNotFoundException {
         countryService.changeCountryState(id, ACTIVE_STATE);
         return ResponseEntity.notFound().build();
