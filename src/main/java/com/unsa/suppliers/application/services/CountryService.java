@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import java.util.List;
 
+import static com.unsa.suppliers.application.services.StateService.ACTIVE_STATE;
+
 @Service
 public class CountryService {
     private final CountryRepository countryRepository;
@@ -25,18 +27,20 @@ public class CountryService {
         return countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
     }
     @Transactional
-    public CountryEntity createCountry(CountryEntity countryEntity) throws CountryDuplicatedException {
+    public CountryEntity createCountry(CountryEntity countryEntity) throws CountryDuplicatedException, CountryNotFoundException {
         if (countryRepository.existsByName(countryEntity.getName())) { throw new CountryDuplicatedException(); }
+        StateEntity stateEntity = stateRepository.findByName(ACTIVE_STATE).orElseThrow(CountryNotFoundException::new);
+        countryEntity.setState(stateEntity);
         return countryRepository.save(countryEntity);
     }
     @Transactional
     public void updateCountry(Integer id, CountryEntity countryEntity) throws CountryNotFoundException, CountryDuplicatedException {
-        CountryEntity optionalCountry = countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
-        if (!optionalCountry.getName().equals(countryEntity.getName()) && countryRepository.existsByName(countryEntity.getName())) {
+        CountryEntity existingCountry = countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
+        if (!existingCountry.getName().equals(countryEntity.getName()) && countryRepository.existsByName(countryEntity.getName())) {
             { throw new CountryDuplicatedException(); }
         }
-        countryEntity.setId(id);
-        countryRepository.save(countryEntity);
+        existingCountry.setName(countryEntity.getName());
+        countryRepository.save(existingCountry);
     }
     @Transactional
     public void changeCountryState(Integer id, String state) throws CountryNotFoundException, StateNotFoundException {
