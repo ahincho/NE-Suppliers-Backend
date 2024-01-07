@@ -41,7 +41,7 @@ public class CountryController {
     }
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public ResponseEntity<CountryResponse> save(@RequestBody @Valid CountryRequest countryRequest, UriComponentsBuilder uriComponentsBuilder) throws CountryDuplicatedException {
+    public ResponseEntity<CountryResponse> save(@RequestBody @Valid CountryRequest countryRequest, UriComponentsBuilder uriComponentsBuilder) throws CountryDuplicatedException, CountryNotFoundException {
         CountryEntity countryEntity = countryService.createCountry(countryMapper.requestToEntity(countryRequest));
         URI uri = uriComponentsBuilder.path("/api/countries/{id]").buildAndExpand(countryEntity.getId()).toUri();
         return ResponseEntity.created(uri).body(countryMapper.entityToResponse(countryEntity));
