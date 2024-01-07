@@ -35,12 +35,12 @@ public class CountryService {
     }
     @Transactional
     public void updateCountry(Integer id, CountryEntity countryEntity) throws CountryNotFoundException, CountryDuplicatedException {
-        CountryEntity optionalCountry = countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
-        if (!optionalCountry.getName().equals(countryEntity.getName()) && countryRepository.existsByName(countryEntity.getName())) {
+        CountryEntity existingCountry = countryRepository.findById(id).orElseThrow(CountryNotFoundException::new);
+        if (!existingCountry.getName().equals(countryEntity.getName()) && countryRepository.existsByName(countryEntity.getName())) {
             { throw new CountryDuplicatedException(); }
         }
-        countryEntity.setId(id);
-        countryRepository.save(countryEntity);
+        existingCountry.setName(countryEntity.getName());
+        countryRepository.save(existingCountry);
     }
     @Transactional
     public void changeCountryState(Integer id, String state) throws CountryNotFoundException, StateNotFoundException {

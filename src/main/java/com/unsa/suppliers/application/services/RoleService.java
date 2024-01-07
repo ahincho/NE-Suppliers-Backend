@@ -30,12 +30,12 @@ public class RoleService {
     }
     @Transactional
     public void updateRole(Integer id, RoleEntity roleEntity) throws RoleNotFoundException, RoleDuplicatedException {
-        RoleEntity optionalRole = roleRepository.findById(id).orElseThrow(RoleNotFoundException::new);
-        if (!optionalRole.getName().equals(roleEntity.getName()) && roleRepository.existsByName(roleEntity.getName())) {
+        RoleEntity existingRole = roleRepository.findById(id).orElseThrow(RoleNotFoundException::new);
+        if (!existingRole.getName().equals(roleEntity.getName()) && roleRepository.existsByName(roleEntity.getName())) {
             throw new RoleDuplicatedException();
         }
-        roleEntity.setId(id);
-        roleRepository.save(roleEntity);
+        existingRole.setName(roleEntity.getName());
+        roleRepository.save(existingRole);
     }
     @Transactional
     public void deleteRole(Integer id) throws RoleNotFoundException, RoleInUseException {

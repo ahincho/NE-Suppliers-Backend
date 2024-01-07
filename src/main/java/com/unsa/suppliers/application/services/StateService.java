@@ -26,12 +26,12 @@ public class StateService {
         return stateRepository.save(stateEntity);
     }
     public void updateState(Integer id, StateEntity stateEntity) throws StateNotFoundException, StateDuplicatedException {
-        StateEntity optionalState = stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
-        if (!optionalState.getName().equals(stateEntity.getName()) && stateRepository.existsByName(stateEntity.getName())) {
+        StateEntity existingState = stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
+        if (!existingState.getName().equals(stateEntity.getName()) && stateRepository.existsByName(stateEntity.getName())) {
             throw new StateDuplicatedException();
         }
-        stateEntity.setId(id);
-        stateRepository.save(stateEntity);
+        existingState.setName(stateEntity.getName());
+        stateRepository.save(existingState);
     }
     public void deleteState(Integer id) throws StateNotFoundException, StateInUseException {
         StateEntity stateEntity = stateRepository.findById(id).orElseThrow(StateNotFoundException::new);
