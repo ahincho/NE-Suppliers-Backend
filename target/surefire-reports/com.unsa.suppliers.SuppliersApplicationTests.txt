@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.unsa.suppliers.SuppliersApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.14 s -- in com.unsa.suppliers.SuppliersApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.86 s -- in com.unsa.suppliers.SuppliersApplicationTests
